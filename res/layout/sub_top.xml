@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/top_bg" >
+
+    <ImageButton
+        android:id="@+id/sub_top_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="35.0dip"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_launcher" />
+
+    <TextView
+        android:id="@+id/sub_top_main"
+        android:layout_width="170.0dip"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10.0dip"
+        android:layout_toRightOf="@id/sub_top_back"
+        android:text="@string/app_name"
+        android:textColor="@color/white"
+        android:textSize="35.0sp" />
+
+
+
+    <Button
+        android:id="@+id/soundtext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="272.0dip"
+        android:background="@drawable/top_vol_nor"
+        android:paddingLeft="40.0dip"
+        android:paddingTop="10.0dip"
+        android:text="10"
+        android:textColor="@color/white"
+        android:textSize="25.0sp" />
+
+    <ImageButton
+        android:id="@+id/backBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="902.0dip"
+        android:background="@null"
+        android:scaleType="fitCenter"
+        android:src="@drawable/home_select" />
+
+</RelativeLayout>

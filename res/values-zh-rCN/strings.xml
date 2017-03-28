@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
+
+    <string name="app_name">音乐</string>
+    <string name="unknown_artist_name">"未知艺术家"</string>
+    <string name="unknown_title_name">"未知歌曲名"</string>
+    <string name="unknown_album_name">"未知专辑"</string>
+    <string name="menu_open_as">打开为...</string>
+    <string name="sub_menu_txt">文本</string>
+    <string name="sub_menu_audio">音频</string>
+    <string name="sub_menu_video">视频</string>
+    <string name="sub_menu_pic">图片</string>
+    <string name="popup_grid">网格显示</string>
+    <string name="popup_list_by_name">列表显示（名称）</string>
+    <string name="popup_list_by_size">列表显示（大小）</string>
+    <string name="popup_list_by_updateTime">列表显示（修改时间）</string>
+    <string name="filter">过滤</string>
+    <string name="all">所有</string>
+    <string name="music">音频</string>
+    <string name="video">视频</string>
+    <string name="picture">图片</string>
+    <string name="toast_operation_failed_sdcard_error">无法执行此操作,SDCard不存在,或者挂载失败！</string>
+    <string name="title_menutitle">菜单</string>
+    <string name="toast_press_one_more_to_exit">再按一次退出程序！</string>
+    <string name="toast_sdcard_error">SDCard不存在,或者挂载失败！</string>
+    <string name="file">文件</string>
+    <string name="folder">目录</string>
+    <string name="include">%1$s 個文件,%2$s 個目录</string>
+    <string name="isexit">是否退齣文件瀏覽 ？</string>
+    <string name="yes">是</string>
+    <string name="no">否</string>
+    <string name="confirm">确认</string>
+    <string name="cancel">取消</string>
+    <string name="operation_cover">覆盖已存在的文件</string>
+    <string name="operation_jump">跳过</string>
+    <string name="operation_append2">在文件名后面加上(2)</string>
+    <string name="operation_doitassame">采用相同的操作</string>
+    <string name="operation_cancel">取消复制</string>
+    <string name="btn_hide">隐藏</string>
+    <string name="btn_positive">确定</string>
+    <string name="btn_negative">取消</string>
+    <string name="btn_selAll">全选</string>
+    <string name="btn_selNone">全不选</string>
+    <string name="btn_open">打开</string>
+    <string name="btn_copy">复制</string>
+    <string name="btn_cut">剪切</string>
+    <string name="btn_delete">删除</string>
+    <string name="btn_rename">重命名</string>
+    <string name="btn_propties">属性</string>
+    <string name="btn_paste">粘贴</string>
+    <string name="btn_new">新建</string>
+    <string name="tip_filetype">類型:</string>
+    <string name="tip_filepath">位置:</string>
+    <string name="tip_include">包含:</string>
+    <string name="tip_filesize">大小:</string>
+    <string name="tip_createdate">創建日期:</string>
+    <string name="tip_modifydate">脩改日期:</string>
+    <string name="tip_canwrite">是否可寫:</string>
+    <string name="tip_canread">是否可讀:</string>
+    <string name="tip_ishide">是否隱藏:</string>
+    <string name="tip_version">版本:</string>
+    
+    
+
+    
+
+</resources>

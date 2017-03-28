@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/music_playback"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:id="@+id/playback_info_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/lrcView"
+        android:layout_marginLeft="76dp"
+        android:layout_marginTop="76dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal" >
+
+
+        
+                <ImageView
+            android:id="@+id/headicon_iv"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:src="@drawable/albumart_mp_unknown" />
+        
+        
+
+        <LinearLayout
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="100dp"
+            android:orientation="vertical" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/icon_mp_album"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="3dp"
+                    android:src="@drawable/icon_file_bg" />
+
+                <com.lihua.music.view.AlwaysMarqueeTextView
+                    android:id="@+id/artist_tv2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="2dp"
+                    android:ellipsize="marquee"
+                    android:focusable="true"
+                    android:focusableInTouchMode="true"
+                    android:marqueeRepeatLimit="marquee_forever"
+                    android:scrollHorizontally="true"
+                    android:singleLine="true"
+                    android:text="@string/unknown_album_name"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/main_music_font_size" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/icon_mp_album"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="3dp"
+                    android:src="@drawable/icon_mp_album" />
+
+                <TextView
+                    android:id="@+id/albumname"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="2dp"
+                    android:ellipsize="end"
+                    android:singleLine="true"
+                    android:text="@string/unknown_album_name"
+                    android:textSize="@dimen/main_music_font_size" />
+
+                <TextView
+                    android:id="@+id/currentseq"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:singleLine="true"
+                    android:textSize="16sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="5dp"
+                android:layout_weight="1" >
+
+                <ImageView
+                    android:id="@+id/icon_mp_artist"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginRight="3dp"
+                    android:src="@drawable/icon_mp_artist" />
+
+
+                
+                
+                
+                            <com.lihua.music.view.AlwaysMarqueeTextView
+                android:id="@+id/artist_tv2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                                    android:layout_marginLeft="2dp"
+                                    android:layout_gravity="center_vertical"
+                android:ellipsize="marquee"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:scrollHorizontally="true"
+                android:singleLine="true"
+                android:textColor="@color/white"
+                    android:text="@string/unknown_artist_name"
+                    android:textSize="@dimen/main_music_font_size"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/musicPosition"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/playback_info_group"
+        android:layout_below="@id/playback_info_group"
+        android:layout_marginLeft="76dp" >
+
+        <TextView
+            android:id="@+id/now_position"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="3dp"
+            android:text="12"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginRight="3dp"
+            android:text="/"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+
+        <TextView
+            android:id="@+id/music_sum"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="2dp"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:text="32"
+            android:textColor="@color/white"
+            android:textSize="30dp" />
+    </LinearLayout>
+
+    <com.lihua.music.view.impl.LrcViewSingle
+        android:id="@+id/lrcView"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp"
+        android:layout_alignRight="@+id/playback_ctrl_group"
+        android:layout_below="@id/musicPosition" />
+
+    <LinearLayout
+        android:id="@+id/playback_ctrl_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/lrcView"
+        android:layout_marginLeft="55dp"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:id="@+id/playback_progress_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <SeekBar
+                android:id="@+id/progress"
+                android:layout_width="496dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:maxHeight="34dp"
+                android:minHeight="34dp"
+                android:progressDrawable="@drawable/seek_drawable"
+                android:thumb="@drawable/seek_thumb"
+                android:thumbOffset="2.0dp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/currenttime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="left"
+                    android:background="@android:color/transparent"
+                    android:text="0:03:01"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/main_progress_font_size" />
+
+                <TextView
+                    android:id="@+id/playstatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="155dp"
+                    android:background="@android:color/transparent"
+                    android:text="播放"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/main_progress_font_size" />
+
+                <TextView
+                    android:id="@+id/playmodel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="272dp"
+                    android:background="@android:color/transparent"
+                    android:text="随机"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/main_progress_font_size" />
+
+                <TextView
+                    android:id="@+id/totaltime"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:background="@android:color/transparent"
+                    android:text="0:03:35"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/main_progress_font_size" />
+            </RelativeLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/file_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginLeft="30dp"
+        android:layout_toRightOf="@+id/playback_info_group"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</RelativeLayout>

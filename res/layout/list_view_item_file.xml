@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/paraList_rl"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/list_select"
+    android:paddingLeft="25dip" >
+
+    <ImageView
+        android:id="@+id/paraList_imgHead"
+        android:layout_width="56dip"
+        android:layout_height="56dip"
+        android:layout_centerVertical="true"
+        android:scaleType="centerInside" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@+id/paraList_imgHead"
+        android:gravity="top"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/paraList_title"
+            style="@style/tvInListView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:textSize="50sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_marginRight="30dip" >
+
+            <TextView
+                android:id="@+id/paraList_size"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:singleLine="true"
+                android:textSize="@dimen/main_music_font_size"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/paraList_updatetime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:singleLine="true"
+                android:textSize="@dimen/main_music_font_size"
+                android:visibility="gone" />
+        </RelativeLayout>
+    </LinearLayout>
+
+</RelativeLayout>

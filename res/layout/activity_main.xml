@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top" >
+
+        <include layout="@layout/sub_top" android:id="@+id/top"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/center"
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        android:gravity="top" >
+
+        <include layout="@layout/music_playback" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/botton"
+        android:layout_width="1024dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/center"
+        android:gravity="top" >
+
+        <include layout="@layout/botton" />
+    </LinearLayout>
+
+</LinearLayout>

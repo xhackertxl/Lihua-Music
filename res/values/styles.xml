@@ -1,0 +1,248 @@
+<resources>
+
+    <!--
+        Base application theme, dependent on API level. This theme is replaced
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+
+    <!-- Application theme. -->
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    
+    <style name="CustomStyle" parent="android:Theme.Holo">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+    
+    <style name="dialog_anim_slide_left" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowExitAnimation">@anim/dialog_exit_slide_left</item>
+    </style>
+    
+    <style name="dialog_anim_slide_up" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowExitAnimation">@anim/dialog_exit_slide_up</item>
+    </style>
+    
+    <style name="dialog_anim_fade_out" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowExitAnimation">@anim/dialog_exit_fade_out</item>
+    </style>
+    
+    <style name="t9_key">
+        <item name="android:layout_width">0.0dip</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1.0</item>
+        <item name="android:paddingBottom">3dp</item>
+        <item name="android:paddingTop">3dp</item>
+    </style>
+    
+    <style name="t9_window_anim" parent="@android:style/Animation">
+        <item name="android:windowEnterAnimation">@anim/push_bottom_in</item>
+        <item name="android:windowExitAnimation">@anim/push_bottom_out</item>
+    </style>
+    
+    <style name="TTNotificationText">
+        <item name="android:textSize">16.0sp</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+    
+    <style name="TTNotificationTitle">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">?android:textColorPrimary</item>
+    </style>
+    
+    <style name="lrc_dialog" parent="@android:style/Theme.Dialog">
+		<item name="android:windowFrame">@null</item>
+		<item name="android:windowIsFloating">true</item>
+		<item name="android:windowIsTranslucent">false</item>
+		<item name="android:windowNoTitle">true</item>
+		<item name="android:windowBackground">@android:color/transparent</item>
+		<item name="android:backgroundDimEnabled">true</item>
+	</style>
+	
+    <style name="SlidingMenu.TextView.ItemTitle" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">18.0sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/list_selector</item>
+        <item name="android:paddingLeft">15.0dip</item>
+        <item name="android:layout_height">50.0dip</item>
+        <item name="android:drawablePadding">15.0dip</item>
+    </style>
+    
+    <style name="SlidingMenu.View.SplitLine" parent="@android:style/Widget">
+        <item name="android:background">@drawable/sliding_menu_line</item>
+        <item name="android:layout_width">fill_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    
+    <style name="SlidingMenu.TextView.Title" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">15.0sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+    
+    <style name="SlidingMenu.TextView.SubTitle" parent="@android:style/Widget.TextView">
+        <item name="android:textSize">12.0sp</item>
+        <item name="android:textColor">@color/dialog_text_hint</item>
+    </style>
+    
+    
+    
+    
+    <style name="dialog_text_color">
+        <item name="android:textColor">#ff33b5e5</item>
+    </style>
+    
+	<style name="dialog" parent="@android:style/Theme.Dialog">
+	  <item name="android:windowFrame">@null</item>
+	  <item name="android:windowIsFloating">true</item>
+	  <item name="android:windowIsTranslucent">true</item>
+	  <item name="android:windowNoTitle">true</item>
+	  <item name="android:background">@android:color/transparent</item>
+	  <item name="android:windowBackground">@android:color/transparent</item>
+	  <item name="android:backgroundDimEnabled">true</item>
+	  <item name="android:backgroundDimAmount">0.6</item>
+	</style>
+	
+	
+	<style name="tvNormal">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@drawable/tv_normal</item>
+	    <item name="android:shadowColor">#64000000</item>
+	    <item name="android:shadowDx">1</item>
+	    <item name="android:shadowDy">1</item>
+	    <item name="android:shadowRadius">1</item>
+	</style>
+	
+	<style name="tvTitle_in">
+		<item name="android:textSize">18sp</item>
+		<item name="android:textColor">@drawable/tv_in</item>
+		<item name="android:layout_marginRight">5dp</item>
+		<item name="android:layout_marginLeft">5dp</item>
+	</style>
+	<style name="tvTitle" parent="@style/tvNormal">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@drawable/tv_normal</item>
+		<item name="android:layout_marginRight">5dp</item>
+		<item name="android:layout_marginLeft">5dp</item>
+	</style>
+	
+	<style name="tvTip">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@drawable/tv_normal</item>
+		<item name="android:layout_marginLeft">5dp</item>
+		<item name="android:layout_marginRight">5dp</item>
+		<item name="android:layout_width">80dp</item>
+		<item name="android:gravity">right</item>
+	</style>
+	
+	<style name="linearLayout">
+		<item name="android:layout_marginTop">5dp</item>
+		<item name="android:layout_marginBottom">5dp</item>
+	</style>
+	
+	<style name="tvAuthor">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textColor">@drawable/my_textview</item>
+	</style>
+	
+	<style name="tvMessageTitle">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textColor">@drawable/my_textview</item>
+	</style>
+	
+	<style name="tvInListView" parent="@style/tvNormal">
+		<item name="android:textSize">@dimen/left_list_font_size</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:textColor">@drawable/textselect</item>
+	</style>
+	
+	<style name="tvInBtn">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textColor">@drawable/textselect</item>
+	</style>
+	<style name="tvInListView_sub">
+		<item name="android:textSize">14sp</item>
+		<item name="android:layout_marginTop">5dp</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:textColor">@drawable/textselect</item>
+	</style>
+	<style name="tvInListViewSelected">
+		<item name="android:textSize">30sp</item>
+		<item name="android:layout_marginTop">10px</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:textColor">@drawable/my_textview_selected</item>
+	</style>
+	<style name="tvInListViewSelected_sub">
+		<item name="android:textSize">14sp</item>
+		<item name="android:layout_marginTop">5dp</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:textColor">@drawable/my_textview_selected</item>
+	</style>
+	<style name="tvInListViewCut">
+		<item name="android:textSize">30sp</item>
+		<item name="android:layout_marginTop">10dp</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:textColor">@drawable/my_textview_cut</item>
+	</style>
+	<style name="tvInListViewCut_sub">
+		<item name="android:textSize">14sp</item>
+		<item name="android:layout_marginTop">5dp</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:textColor">@drawable/my_textview_cut</item>
+	</style>
+	<style name="tvPath">
+		<item name="android:textSize">16sp</item>
+		<item name="android:textColor">@drawable/my_textview_path</item>
+		<item name="android:layout_marginRight">5dp</item>
+		<item name="android:layout_marginLeft">5dp</item>
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+	<style name="cur">
+		<item name="android:textSize">20sp</item>
+		<item name="android:textColor">@drawable/my_textview_cur</item>
+		<item name="android:layout_marginRight">5dp</item>
+		<item name="android:layout_marginLeft">5dp</item>
+		<item name="android:layout_width">wrap_content</item>
+		<item name="android:layout_height">wrap_content</item>
+	</style>
+	<style name="tvInListViewForInfo">
+		<item name="android:textSize">14sp</item>
+		<item name="android:gravity">center_vertical|right</item>
+		<item name="android:layout_marginRight">10dp</item>
+		<item name="android:textColor">@drawable/tv_normal</item>
+	</style>
+	
+	<style name="tvInGridView" parent="@style/tvNormal">
+		<item name="android:textSize">18sp</item>
+		<item name="android:layout_marginTop">5dip</item>
+		<item name="android:layout_marginBottom">5dip</item>
+		<item name="android:textColor">@drawable/textselect</item>
+	</style>
+	<style name="tvInGridViewCut">
+		<item name="android:textSize">20sp</item>
+		<item name="android:layout_marginTop">10dp</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:textColor">@drawable/my_textview_cut</item>
+	</style>
+	<style name="tvInGridViewSelected">
+		<item name="android:textSize">20sp</item>
+		<item name="android:layout_marginTop">10px</item>
+		<item name="android:gravity">center_vertical</item>
+		<item name="android:textColor">@drawable/my_textview_selected</item>
+	</style>
+	
+	<style name="Animations" />
+
+	<!-- PopDownMenu -->
+	<style name="Animations.PopDownMenu" />
+	
+    
+    
+</resources>
