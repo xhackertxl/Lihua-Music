@@ -3,7 +3,24 @@
  */
 package com.lihua.music.fragment;
 
+import com.lihua.music.MusicApp;
 import com.lihua.music.R;
+import com.lihua.music.activity.IConstants;
+import com.lihua.music.aidl.IMediaService;
+import com.lihua.music.db.AlbumInfoDao;
+import com.lihua.music.db.ArtistInfoDao;
+import com.lihua.music.db.FavoriteInfoDao;
+import com.lihua.music.db.FolderInfoDao;
+import com.lihua.music.db.MusicInfoDao;
+import com.lihua.music.interfaces.IOnServiceConnectComplete;
+import com.lihua.music.model.MusicInfo;
+import com.lihua.music.service.ServiceManager;
+import com.lihua.music.uimanager.MainBottomUIManager;
+import com.lihua.music.uimanager.SlidingDrawerManager;
+import com.lihua.music.uimanager.UIManager;
+import com.lihua.music.uimanager.UIManager.OnRefreshListener;
+import com.lihua.music.utils.MusicTimer;
+
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -21,23 +38,6 @@ import android.widget.GridView;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import com.lihua.music.MusicApp;
-import com.lihua.music.activity.IConstants;
-import com.lihua.music.aidl.IMediaService;
-import com.lihua.music.db.AlbumInfoDao;
-import com.lihua.music.db.ArtistInfoDao;
-import com.lihua.music.db.FavoriteInfoDao;
-import com.lihua.music.db.FolderInfoDao;
-import com.lihua.music.db.MusicInfoDao;
-import com.lihua.music.interfaces.IOnServiceConnectComplete;
-import com.lihua.music.model.MusicInfo;
-import com.lihua.music.service.ServiceManager;
-import com.lihua.music.uimanager.MainBottomUIManager;
-import com.lihua.music.uimanager.SlidingDrawerManager;
-import com.lihua.music.uimanager.UIManager;
-import com.lihua.music.uimanager.UIManager.OnRefreshListener;
-import com.lihua.music.utils.MusicTimer;
 
 /**
  * 首页内容 该类展示了软件的几大模块 另外要注意嵌套的两层ViewPager

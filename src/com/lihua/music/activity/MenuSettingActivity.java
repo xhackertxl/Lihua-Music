@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lihua.music.R;
+import com.lihua.music.fragment.LeftFragment;
+import com.lihua.music.fragment.MenuSettingFragment;
+import com.lihua.music.fragment.RightFragment;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -14,11 +18,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-
-import com.lihua.music.fragment.LeftFragment;
-import com.lihua.music.fragment.MenuSettingFragment;
-import com.lihua.music.fragment.RightFragment;
-import com.zdp.aseo.content.AseoZdpAseo;
 
 /**
  * 设置界面
@@ -45,7 +44,7 @@ public class MenuSettingActivity extends FragmentActivity {
 		Fragment leftFragment = new LeftFragment();
 		Fragment rightFragment = new RightFragment();
 		Fragment menuFragment = new MenuSettingFragment();
-		AseoZdpAseo.initType(this, AseoZdpAseo.SCREEN_TYPE);
+
 		mFragmentList.add(leftFragment);
 		mFragmentList.add(menuFragment);
 		mFragmentList.add(rightFragment);

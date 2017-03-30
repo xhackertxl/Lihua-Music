@@ -2,7 +2,9 @@
     android:id="@+id/main_mymusic_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical"
+    android:theme="@android:style/Theme.Wallpaper.NoTitleBar"       
+     >
 
     <include
         android:id="@+id/topLayout"
@@ -69,8 +71,7 @@
                 android:layout_weight="1" >
 
                 <ImageView
-                    android:id="@+id/icon_mp_album"
-                    android:layout_width="wrap_content"
+                    android:layout_width="wrap_content" 
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_vertical"
                     android:layout_marginRight="3dp"

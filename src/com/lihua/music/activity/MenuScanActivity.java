@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lihua.music.R;
+import com.lihua.music.fragment.LeftFragment;
+import com.lihua.music.fragment.MenuScanFragment;
+import com.lihua.music.fragment.RightFragment;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -14,11 +18,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-
-import com.lihua.music.fragment.LeftFragment;
-import com.lihua.music.fragment.MenuScanFragment;
-import com.lihua.music.fragment.RightFragment;
-import com.zdp.aseo.content.AseoZdpAseo;
 
 /**
  * 扫描歌曲
@@ -36,7 +35,7 @@ public class MenuScanActivity extends FragmentActivity {
 		
 		setContentView(R.layout.menu_scan);
 		mViewPager = (ViewPager) findViewById(R.id.viewPager);
-		AseoZdpAseo.initType(this, AseoZdpAseo.SCREEN_TYPE);
+
 		initViewPager();
 	}
 

@@ -85,6 +85,7 @@ public class MyMusicManager extends MainUIManager implements IConstants,
 
 	public View getView(int from, Object object) {
 		View contentView = mInflater.inflate(R.layout.mymusic, null);
+					
 		mFrom = from;
 		mObj = object;
 		// initBg(contentView);

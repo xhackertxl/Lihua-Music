@@ -41,7 +41,6 @@ public class LyricLoadHelper {
 
 		/**
 		 * 歌词变化时调用
-		 * 
 		 * @param indexOfCurSentence
 		 *            正在播放的句子在句子集合中的索引号
 		 * @param currentTime

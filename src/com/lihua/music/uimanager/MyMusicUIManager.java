@@ -39,14 +39,13 @@ import com.lihua.music.view.AlwaysMarqueeTextView;
  * 
  */
 @SuppressLint("HandlerLeak")
-public class MyMusicUIManager implements OnClickListener,
-		OnSeekBarChangeListener, IConstants {
+public class MyMusicUIManager implements OnClickListener, OnSeekBarChangeListener, IConstants {
 
 	private Activity mActivity;
 	private View mView;
 	private ServiceManager mServiceManager;
-	private AlwaysMarqueeTextView mMusicNameTv, mArtistTv,mAlbumname;
-	private TextView mPositionTv, mDurationTv , music_sum , now_position ;
+	private AlwaysMarqueeTextView mMusicNameTv, mArtistTv, mAlbumname;
+	private TextView mPositionTv, mDurationTv, music_sum, now_position;
 	private ImageButton mPlayBtn, mPauseBtn, mNextBtn, mMenuBtn;
 	private SeekBar mPlaybackProgress;
 	public Handler mHandler;
@@ -54,10 +53,7 @@ public class MyMusicUIManager implements OnClickListener,
 	private ImageView mHeadIcon;
 	private ImageButton mBackBtn;
 
-
-
-	public MyMusicUIManager(Activity a, ServiceManager sm, View view,
-			UIManager manager) {
+	public MyMusicUIManager(Activity a, ServiceManager sm, View view, UIManager manager) {
 		this.mActivity = a;
 		this.mView = view;
 
@@ -68,12 +64,11 @@ public class MyMusicUIManager implements OnClickListener,
 			@Override
 			public void handleMessage(Message msg) {
 				super.handleMessage(msg);
-				refreshSeekProgress(mServiceManager.position(),
-						mServiceManager.duration());
+				refreshSeekProgress(mServiceManager.position(), mServiceManager.duration());
 			}
 		};
 	}
-	
+
 	public MyMusicUIManager(Activity a, ServiceManager sm, View view) {
 		this.mActivity = a;
 		this.mView = view;
@@ -85,8 +80,7 @@ public class MyMusicUIManager implements OnClickListener,
 			@Override
 			public void handleMessage(Message msg) {
 				super.handleMessage(msg);
-				refreshSeekProgress(mServiceManager.position(),
-						mServiceManager.duration());
+				refreshSeekProgress(mServiceManager.position(), mServiceManager.duration());
 			}
 		};
 	}
@@ -105,13 +99,12 @@ public class MyMusicUIManager implements OnClickListener,
 		mStopBtn = (ImageButton) findViewById(R.id.btn_stop2);
 		mPlayBtn = (ImageButton) findViewById(R.id.btn_play2);
 		mPauseBtn = (ImageButton) findViewById(R.id.btn_pause2);
-		mNextBtn = (ImageButton) findViewById(R.id.btn_playNext2);				
+		mNextBtn = (ImageButton) findViewById(R.id.btn_playNext2);
 		mMenuBtn = (ImageButton) findViewById(R.id.btn_menu2);
-		
-		
+
 		music_sum = (TextView) findViewById(R.id.music_sum);
 		now_position = (TextView) findViewById(R.id.now_position);
-		
+
 		mStopBtn.setOnClickListener(this);
 		mPrevBtn.setOnClickListener(this);
 		mPlayModeBtn.setOnClickListener(this);
@@ -124,8 +117,7 @@ public class MyMusicUIManager implements OnClickListener,
 		mPlaybackProgress = (SeekBar) findViewById(R.id.playback_seekbar2);
 		mPlaybackProgress.setOnSeekBarChangeListener(this);
 
-		mDefaultAlbumIcon = BitmapFactory.decodeResource(
-				mActivity.getResources(), R.drawable.albumart_mp_unknown);
+		mDefaultAlbumIcon = BitmapFactory.decodeResource(mActivity.getResources(), R.drawable.albumart_mp_unknown);
 		/*
 		 * mDefaultAlbumIcon = new BitmapDrawable(mActivity.getResources(), b);
 		 * // no filter or dither, it's a lot faster and we can't tell the //
@@ -146,10 +138,9 @@ public class MyMusicUIManager implements OnClickListener,
 		String curTimeString = String.format("%02d:%02d", curminute, cursecond);
 		mPositionTv.setText(curTimeString);
 
-
-		if(mPlaybackProgress.getMax() != totalTime)			
+		if (mPlaybackProgress.getMax() != totalTime)
 			mPlaybackProgress.setMax(totalTime);
-		
+
 		mPlaybackProgress.setProgress(curTime);
 	}
 
@@ -163,8 +154,7 @@ public class MyMusicUIManager implements OnClickListener,
 		totalTime /= 1000;
 		int totalminute = totalTime / 60;
 		int totalsecond = totalTime % 60;
-		String totalTimeString = String.format("%02d:%02d", totalminute,
-				totalsecond);
+		String totalTimeString = String.format("%02d:%02d", totalminute, totalsecond);
 
 		mDurationTv.setText(totalTimeString);
 
@@ -172,12 +162,10 @@ public class MyMusicUIManager implements OnClickListener,
 		mAlbumname.setText(music.album);
 		mArtistTv.setText(music.artist);
 
-		Bitmap bitmap = MusicUtils.getCachedArtwork(mActivity, music.albumId,
-				mDefaultAlbumIcon);
+		Bitmap bitmap = MusicUtils.getCachedArtwork(mActivity, music.albumId, mDefaultAlbumIcon);
 
-		mHeadIcon.setBackgroundDrawable(new BitmapDrawable(mActivity
-				.getResources(), bitmap));
-				
+		mHeadIcon.setBackgroundDrawable(new BitmapDrawable(mActivity.getResources(), bitmap));
+
 		refreshSeekProgress(tempCurTime, tempTotalTime);
 	}
 
@@ -223,7 +211,13 @@ public class MyMusicUIManager implements OnClickListener,
 		case R.id.backBtn:
 			// MainContentActivity.mSlidingMenu.showMenu();
 			// mActivity.onBackPressed();
-			//mUIManager.setCurrentItem();
+			// mUIManager.setCurrentItem();
+
+			Intent intent = new Intent(Intent.ACTION_MAIN, null);
+			intent.addCategory(Intent.CATEGORY_HOME);
+			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_RESET_TASK_IF_NEEDED);
+			mActivity.startActivity(intent);
+
 			break;
 		case R.id.btn_menu2:
 			((MainContentActivity) mActivity).mSlidingMenu.showMenu(true);
@@ -246,8 +240,7 @@ public class MyMusicUIManager implements OnClickListener,
 	}
 
 	@Override
-	public void onProgressChanged(SeekBar seekBar, int progress,
-			boolean fromUser) {
+	public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 		if (seekBar == mPlaybackProgress) {
 			if (!mPlayAuto) {
 				mProgress = progress;
@@ -272,8 +265,7 @@ public class MyMusicUIManager implements OnClickListener,
 		if (seekBar == mPlaybackProgress) {
 			mPlayAuto = true;
 			mServiceManager.seekTo(mProgress);
-			refreshSeekProgress(mServiceManager.position(),
-					mServiceManager.duration());
+			refreshSeekProgress(mServiceManager.position(), mServiceManager.duration());
 			mServiceManager.rePlay();
 			mMusicTimer.startTimer();
 		}
@@ -283,7 +275,7 @@ public class MyMusicUIManager implements OnClickListener,
 	private ImageButton mPlayModeBtn;
 	private int mCurMode;
 	private static final String modeName[] = { "全部循环", "顺序播放", "随机播放", "单曲循环" };
-	
+
 	// 播放模式
 	public static final int MPM_LIST_LOOP_PLAY = 0; // 全部循环
 	public static final int MPM_ORDER_PLAY = 1; // 顺序播放
@@ -302,19 +294,17 @@ public class MyMusicUIManager implements OnClickListener,
 	private void initPlayMode() {
 		mPlayModeTv.setText(modeName[mCurMode]);
 	}
-	
-	public void setMusicList (String now , String num)
-	{
+
+	public void setMusicList(String now, String num) {
 
 		music_sum.setText(num);
 		now_position.setText(now);
 	}
-	
-	public void setMusicList (String now)
-	{
-		Integer text = mServiceManager.getMusicList().size();		
+
+	public void setMusicList(String now) {
+		Integer text = mServiceManager.getMusicList().size();
 		music_sum.setText(text.toString());
-		text  = mServiceManager.position();
+		text = mServiceManager.position();
 		now_position.setText(now);
 	}
 }

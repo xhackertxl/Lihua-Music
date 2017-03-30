@@ -40,27 +40,25 @@ import com.lihua.music.uimanager.UIManager.OnRefreshListener;
 import com.lihua.music.utils.MusicTimer;
 
 /**
- * 首页内容
- * 该类展示了软件的几大模块
- * 另外要注意嵌套的两层ViewPager
+ * 首页内容 该类展示了软件的几大模块 另外要注意嵌套的两层ViewPager
+ * 
  * @author tacker(335682638@qq.com)
  *
  */
-public class MainFragment extends Fragment implements IConstants,
-		IOnServiceConnectComplete, OnRefreshListener, OnTouchListener {
+public class MainFragment extends Fragment
+		implements IConstants, IOnServiceConnectComplete, OnRefreshListener, OnTouchListener {
 
 	private GridView mGridView;
 	private MyGridViewAdapter mAdapter;
 	protected IMediaService mService;
 
-	
 	private MusicInfoDao mMusicDao;
 	private FolderInfoDao mFolderDao;
 	private ArtistInfoDao mArtistDao;
 	private AlbumInfoDao mAlbumDao;
 	private FavoriteInfoDao mFavoriteDao;
 	public UIManager mUIManager;
-	
+
 	private MusicTimer mMusicTimer;
 	private MusicPlayBroadcast mPlayBroadcast;
 	private MainBottomUIManager mBottomUIManager;
@@ -68,7 +66,7 @@ public class MainFragment extends Fragment implements IConstants,
 	private RelativeLayout mBottomLayout, mMainLayout;
 	private Bitmap defaultArtwork;
 	private ServiceManager mServiceManager;
-	
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -81,14 +79,12 @@ public class MainFragment extends Fragment implements IConstants,
 	}
 
 	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
+	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
 		View view = inflater.inflate(R.layout.frame_main1, container, false);
 		mGridView = (GridView) view.findViewById(R.id.gridview);
 		mAdapter = new MyGridViewAdapter();
-		
-						
+
 		mMainLayout = (RelativeLayout) view.findViewById(R.id.main_layout);
 		mMainLayout.setOnTouchListener(this);
 		mBottomLayout = (RelativeLayout) view.findViewById(R.id.bottomLayout);
@@ -97,15 +93,15 @@ public class MainFragment extends Fragment implements IConstants,
 		MusicApp.mServiceManager.setOnServiceConnectComplete(this);
 
 		mGridView.setAdapter(mAdapter);
-		
+
 		mUIManager = new UIManager(getActivity(), view);
 		mUIManager.setOnRefreshListener(this);
-		
+
 		mSdm = new SlidingDrawerManager(getActivity(), mServiceManager, view);
 		mBottomUIManager = new MainBottomUIManager(getActivity(), view);
 		mMusicTimer = new MusicTimer(mSdm.mHandler, mBottomUIManager.mHandler);
 		mSdm.setMusicTimer(mMusicTimer);
-		
+
 		mPlayBroadcast = new MusicPlayBroadcast();
 		IntentFilter filter = new IntentFilter(BROADCAST_NAME);
 		filter.addAction(BROADCAST_NAME);
@@ -113,17 +109,12 @@ public class MainFragment extends Fragment implements IConstants,
 
 		return view;
 	}
-	
-	
-	
 
 	private class MyGridViewAdapter extends BaseAdapter {
 
-		private int[] drawable = new int[] { R.drawable.icon_local_music,
-				R.drawable.icon_favorites, R.drawable.icon_folder_plus,
-				R.drawable.icon_artist_plus, R.drawable.icon_album_plus };
-		private String[] name = new String[] { "我的音乐", "我的最爱", "文件夹", "歌手",
-				"专辑" };
+		private int[] drawable = new int[] { R.drawable.icon_local_music, R.drawable.icon_favorites,
+				R.drawable.icon_folder_plus, R.drawable.icon_artist_plus, R.drawable.icon_album_plus };
+		private String[] name = new String[] { "我的音乐", "我的最爱", "文件夹", "歌手", "专辑" };
 		private int musicNum = 0, artistNum = 0, albumNum = 0, folderNum = 0, favoriteNum = 0;
 
 		@Override
@@ -141,8 +132,7 @@ public class MainFragment extends Fragment implements IConstants,
 			return position;
 		}
 
-		public void setNum(int music_num, int artist_num, int album_num,
-				int folder_num, int favorite_num) {
+		public void setNum(int music_num, int artist_num, int album_num, int folder_num, int favorite_num) {
 			musicNum = music_num;
 			artistNum = artist_num;
 			albumNum = album_num;
@@ -152,20 +142,15 @@ public class MainFragment extends Fragment implements IConstants,
 		}
 
 		@Override
-		public View getView(final int position, View convertView,
-				ViewGroup parent) {
+		public View getView(final int position, View convertView, ViewGroup parent) {
 
 			ViewHolder holder;
 			if (convertView == null) {
 				holder = new ViewHolder();
-				convertView = getActivity().getLayoutInflater().inflate(
-						R.layout.main_gridview_item, null);
-				holder.iv = (ImageView) convertView
-						.findViewById(R.id.gridview_item_iv);
-				holder.nameTv = (TextView) convertView
-						.findViewById(R.id.gridview_item_name);
-				holder.numTv = (TextView) convertView
-						.findViewById(R.id.gridview_item_num);
+				convertView = getActivity().getLayoutInflater().inflate(R.layout.main_gridview_item, null);
+				holder.iv = (ImageView) convertView.findViewById(R.id.gridview_item_iv);
+				holder.nameTv = (TextView) convertView.findViewById(R.id.gridview_item_name);
+				holder.numTv = (TextView) convertView.findViewById(R.id.gridview_item_num);
 				convertView.setTag(holder);
 			} else {
 				holder = (ViewHolder) convertView.getTag();
@@ -239,10 +224,10 @@ public class MainFragment extends Fragment implements IConstants,
 		int albumCount = mAlbumDao.getDataCount();
 		int folderCount = mFolderDao.getDataCount();
 		int favoriteCount = mFavoriteDao.getDataCount();
-		
+
 		mAdapter.setNum(musicCount, artistCount, albumCount, folderCount, favoriteCount);
 	}
-	
+
 	private class MusicPlayBroadcast extends BroadcastReceiver {
 
 		@Override
@@ -266,36 +251,30 @@ public class MainFragment extends Fragment implements IConstants,
 					break;
 				case MPS_PAUSE:
 					mMusicTimer.stopTimer();
-					mSdm.refreshUI(mServiceManager.position(), music.duration,
-							music);
+					mSdm.refreshUI(mServiceManager.position(), music.duration, music);
 					mSdm.showPlay(true);
 
-					mBottomUIManager.refreshUI(mServiceManager.position(), music.duration,
-							music);
+					mBottomUIManager.refreshUI(mServiceManager.position(), music.duration, music);
 					mBottomUIManager.showPlay(true);
 
 					mServiceManager.cancelNotification();
 					break;
 				case MPS_STOP:
 					mMusicTimer.stopTimer();
-					mSdm.refreshUI(0, music.duration,
-							music);
+					mSdm.refreshUI(0, music.duration, music);
 					mSdm.showPlay(true);
 
-					mBottomUIManager.refreshUI(0, music.duration,
-							music);
+					mBottomUIManager.refreshUI(0, music.duration, music);
 					mBottomUIManager.showPlay(true);
 
 					mServiceManager.cancelNotification();
 					break;
 				case MPS_PLAYING:
 					mMusicTimer.startTimer();
-					mSdm.refreshUI(mServiceManager.position(), music.duration,
-							music);
+					mSdm.refreshUI(mServiceManager.position(), music.duration, music);
 					mSdm.showPlay(false);
 
-					mBottomUIManager.refreshUI(mServiceManager.position(), music.duration,
-							music);
+					mBottomUIManager.refreshUI(mServiceManager.position(), music.duration, music);
 					mBottomUIManager.showPlay(false);
 
 					break;
@@ -321,6 +300,7 @@ public class MainFragment extends Fragment implements IConstants,
 	}
 
 	int oldY = 0;
+
 	@Override
 	public boolean onTouch(View v, MotionEvent event) {
 		int bottomTop = mBottomLayout.getTop();
@@ -331,7 +311,6 @@ public class MainFragment extends Fragment implements IConstants,
 				mSdm.open();
 			}
 		}
-		
 
 		return true;
 	}

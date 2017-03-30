@@ -7,6 +7,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lihua.music.R;
+import com.lihua.music.aidl.IMediaService;
+import com.lihua.music.model.MusicInfo;
+import com.lihua.music.utils.MusicUtils;
+
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
@@ -26,11 +30,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.lihua.music.aidl.IMediaService;
-import com.lihua.music.model.MusicInfo;
-import com.lihua.music.utils.MusicUtils;
-import com.zdp.aseo.content.AseoZdpAseo;
 
 /**
  * 播放队列
@@ -68,7 +67,7 @@ public class PlayQueueActivity extends Activity implements OnItemClickListener, 
 	}
 	
 	private void initConnection() {
-		AseoZdpAseo.initType(this, AseoZdpAseo.SCREEN_TYPE);
+
 		mServiceConnection = new ServiceConnection() {
 			
 			@Override

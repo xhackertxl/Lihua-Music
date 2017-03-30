@@ -59,18 +59,17 @@ import com.lihua.music.view.MySlidingDrawer;
 
 /**
  * 底部弹出的歌词界面控制
+ * 
  * @author tacker(335682638@qq.com)
  *
  */
 @SuppressLint("HandlerLeak")
-public class SlidingDrawerManager implements OnClickListener,
-		OnSeekBarChangeListener, IConstants, OnDrawerOpenListener,
-		OnDrawerCloseListener {
+public class SlidingDrawerManager
+		implements OnClickListener, OnSeekBarChangeListener, IConstants, OnDrawerOpenListener, OnDrawerCloseListener {
 
 	private MySlidingDrawer mSliding;
 	private TextView mMusicNameTv, mArtistTv, mCurTimeTv, mTotalTimeTv;
-	private ImageButton mPrevBtn, mNextBtn, mPlayBtn, mPauseBtn, mVolumeBtn,
-			mFavoriteBtn;
+	private ImageButton mPrevBtn, mNextBtn, mPlayBtn, mPauseBtn, mVolumeBtn, mFavoriteBtn;
 	private ListView mLrcListView;
 	private LinearLayout mVolumeLayout;
 	private Activity mActivity;
@@ -131,10 +130,8 @@ public class SlidingDrawerManager implements OnClickListener,
 
 		// mLrcUtil = new LrcUtil();
 
-		mAudioManager = (AudioManager) a
-				.getSystemService(Context.AUDIO_SERVICE);
-		mMaxVolume = mAudioManager
-				.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
+		mAudioManager = (AudioManager) a.getSystemService(Context.AUDIO_SERVICE);
+		mMaxVolume = mAudioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
 		mCurVolume = mAudioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 
 		view_in = AnimationUtils.loadAnimation(a, R.anim.fade_in);
@@ -146,8 +143,7 @@ public class SlidingDrawerManager implements OnClickListener,
 			@Override
 			public void handleMessage(Message msg) {
 				super.handleMessage(msg);
-				refreshSeekProgress(mServiceManager.position(),
-						mServiceManager.duration());
+				refreshSeekProgress(mServiceManager.position(), mServiceManager.duration());
 			}
 		};
 	}
@@ -171,8 +167,7 @@ public class SlidingDrawerManager implements OnClickListener,
 
 		mLrcListView.setAdapter(mLyricAdapter);
 		mLrcListView.setEmptyView(mLrcEmptyView);
-		mLrcListView.startAnimation(AnimationUtils.loadAnimation(mActivity,
-				android.R.anim.fade_in));
+		mLrcListView.startAnimation(AnimationUtils.loadAnimation(mActivity, android.R.anim.fade_in));
 
 		mSliding.setOnDrawerCloseListener(this);
 		mSliding.setOnDrawerOpenListener(this);
@@ -242,8 +237,7 @@ public class SlidingDrawerManager implements OnClickListener,
 		totalTime /= 1000;
 		int totalminute = totalTime / 60;
 		int totalsecond = totalTime % 60;
-		String totalTimeString = String.format("%02d:%02d", totalminute,
-				totalsecond);
+		String totalTimeString = String.format("%02d:%02d", totalminute, totalsecond);
 
 		mTotalTimeTv.setText(totalTimeString);
 
@@ -311,8 +305,7 @@ public class SlidingDrawerManager implements OnClickListener,
 			}
 			break;
 		case R.id.btn_more:
-			mActivity.startActivity(new Intent(mActivity,
-					PlayQueueActivity.class));
+			mActivity.startActivity(new Intent(mActivity, PlayQueueActivity.class));
 			break;
 		case R.id.btn_favorite:
 			if (mCurrentMusicInfo == null) {
@@ -361,11 +354,10 @@ public class SlidingDrawerManager implements OnClickListener,
 					String artist = artistEt.getText().toString().trim();
 					String music = musicEt.getText().toString().trim();
 					if (TextUtils.isEmpty(artist) || TextUtils.isEmpty(music)) {
-						Toast.makeText(mActivity, "歌手和歌曲不能为空",
-								Toast.LENGTH_SHORT).show();
+						Toast.makeText(mActivity, "歌手和歌曲不能为空", Toast.LENGTH_SHORT).show();
 					} else {
 						// 开始搜索
-//						loadLyric(music, artist);
+						// loadLyric(music, artist);
 						loadLyricByHand(music, artist);
 						dialog.dismiss();
 					}
@@ -385,8 +377,8 @@ public class SlidingDrawerManager implements OnClickListener,
 	}
 
 	public void open() {
-		mSliding.setVisibility(View.VISIBLE);		
-		//动画
+		mSliding.setVisibility(View.VISIBLE);
+		// 动画
 		mSliding.animateOpen();
 	}
 
@@ -399,8 +391,7 @@ public class SlidingDrawerManager implements OnClickListener,
 	}
 
 	@Override
-	public void onProgressChanged(SeekBar seekBar, int progress,
-			boolean fromUser) {
+	public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
 		if (seekBar == mPlaybackSeekBar) {
 			if (!mPlayAuto) {
@@ -410,8 +401,7 @@ public class SlidingDrawerManager implements OnClickListener,
 				// mServiceManager.duration());
 			}
 		} else if (seekBar == mVolumeSeekBar) {
-			mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress,
-					0);
+			mAudioManager.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
 		}
 	}
 
@@ -429,8 +419,7 @@ public class SlidingDrawerManager implements OnClickListener,
 		if (seekBar == mPlaybackSeekBar) {
 			mPlayAuto = true;
 			mServiceManager.seekTo(mProgress);
-			refreshSeekProgress(mServiceManager.position(),
-					mServiceManager.duration());
+			refreshSeekProgress(mServiceManager.position(), mServiceManager.duration());
 			mServiceManager.rePlay();
 			mMusicTimer.startTimer();
 		}
@@ -451,8 +440,7 @@ public class SlidingDrawerManager implements OnClickListener,
 			return;
 		}
 		// 取得歌曲同目录下的歌词文件绝对路径
-		String lyricFilePath = MusicApp.lrcPath + "/" + playingSong.musicName
-				+ ".lrc";
+		String lyricFilePath = MusicApp.lrcPath + "/" + playingSong.musicName + ".lrc";
 		File lyricfile = new File(lyricFilePath);
 
 		if (lyricfile.exists()) {
@@ -464,8 +452,7 @@ public class SlidingDrawerManager implements OnClickListener,
 				mIsLyricDownloading = true;
 				// 尝试网络获取歌词
 				// Log.i(TAG, "loadLyric()--->本地无歌词，尝试从网络获取");
-				new LyricDownloadAsyncTask().execute(playingSong.musicName,
-						playingSong.artist);
+				new LyricDownloadAsyncTask().execute(playingSong.musicName, playingSong.artist);
 			} else {
 				// 设置歌词为空
 				mLyricLoadHelper.loadLyric(null);
@@ -514,8 +501,8 @@ public class SlidingDrawerManager implements OnClickListener,
 		@Override
 		protected String doInBackground(String... params) {
 			// 从网络获取歌词，然后保存到本地
-			String lyricFilePath = mLyricDownloadManager.searchLyricFromWeb(
-					params[0], params[1], mCurrentMusicInfo.musicName);
+			String lyricFilePath = mLyricDownloadManager.searchLyricFromWeb(params[0], params[1],
+					mCurrentMusicInfo.musicName);
 			// 返回本地歌词路径
 			mIsLyricDownloading = false;
 			return lyricFilePath;
@@ -553,8 +540,7 @@ public class SlidingDrawerManager implements OnClickListener,
 			// indexOfCurSentence);
 			mLyricAdapter.setCurrentSentenceIndex(indexOfCurSentence);
 			mLyricAdapter.notifyDataSetChanged();
-			mLrcListView.smoothScrollToPositionFromTop(indexOfCurSentence,
-					mLrcListView.getHeight() / 2, 500);
+			mLrcListView.smoothScrollToPositionFromTop(indexOfCurSentence, mLrcListView.getHeight() / 2, 500);
 		}
 	};
 
@@ -567,17 +553,16 @@ public class SlidingDrawerManager implements OnClickListener,
 		// 注：ABSOLUTE表示离当前自己的View绝对的像素单位
 		// 使用RELATIVE_TO_SELF和RELATIVE_TO_PARENT时一般用倍数关系 一般用1f 0f
 		// 表示相对于自身或父控件几倍的移动
-		TranslateAnimation transAnim = new TranslateAnimation(
-				Animation.ABSOLUTE, 0f, Animation.ABSOLUTE, -fromX,
+		TranslateAnimation transAnim = new TranslateAnimation(Animation.ABSOLUTE, 0f, Animation.ABSOLUTE, -fromX,
 				Animation.ABSOLUTE, 0f, Animation.ABSOLUTE, -fromY);
 
 		AlphaAnimation alphaAnim1 = new AlphaAnimation(0f, 1f);
-		ScaleAnimation scaleAnim1 = new ScaleAnimation(0, 1, 0, 1,
-				Animation.RELATIVE_TO_PARENT, Animation.RELATIVE_TO_PARENT);
+		ScaleAnimation scaleAnim1 = new ScaleAnimation(0, 1, 0, 1, Animation.RELATIVE_TO_PARENT,
+				Animation.RELATIVE_TO_PARENT);
 
 		AlphaAnimation alphaAnim2 = new AlphaAnimation(1f, 0f);
-		ScaleAnimation scaleAnim2 = new ScaleAnimation(1, 0, 1, 0,
-				Animation.RELATIVE_TO_PARENT, Animation.RELATIVE_TO_PARENT);
+		ScaleAnimation scaleAnim2 = new ScaleAnimation(1, 0, 1, 0, Animation.RELATIVE_TO_PARENT,
+				Animation.RELATIVE_TO_PARENT);
 
 		transAnim.setDuration(600);
 

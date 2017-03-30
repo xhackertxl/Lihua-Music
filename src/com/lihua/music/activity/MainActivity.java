@@ -5,15 +5,12 @@ import java.util.List;
 
 import com.lihua.music.MusicApp;
 import com.lihua.music.R;
-
 import com.lihua.music.aidl.IMediaService;
 import com.lihua.music.db.MusicInfoDao;
-
 import com.lihua.music.interfaces.IOnServiceConnectComplete;
 import com.lihua.music.slidemenu.SlidingMenu;
 import com.lihua.music.uimanager.MyMusicManager;
 import com.lihua.music.utils.MusicUtils;
-import com.zdp.aseo.content.AseoZdpAseo;
 
 import android.app.Activity;
 import android.app.AlarmManager;
@@ -23,7 +20,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.media.AudioManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -31,9 +27,9 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -70,7 +66,7 @@ public class MainActivity extends Activity implements IConstants ,
 		mMainFragment = new MyMusicManager(this);
 
 		setContentView(mMainFragment.getView());
-		AseoZdpAseo.initType(this, AseoZdpAseo.SCREEN_TYPE);
+
 		// configure the SlidingMenu
 		mSlidingMenu = new SlidingMenu(this);
 		mSlidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
@@ -155,7 +151,7 @@ public class MainActivity extends Activity implements IConstants ,
 				// 在activity中调用 moveTaskToBack (boolean nonRoot)方法即可将activity
 				// 退到后台，注意不是finish()退出。
 				// 参数为false代表只有当前activity是task根，指应用启动的第一个activity时，才有效;
-				AseoZdpAseo.initFinalTimer(this);
+
 				moveTaskToBack(true);
 			}
 			for (OnBackListener listener : mBackListeners) {
@@ -266,7 +262,6 @@ public class MainActivity extends Activity implements IConstants ,
 	}
 	
 	private BroadcastReceiver mAlarmReceiver = new BroadcastReceiver() {
-
 		@Override
 		public void onReceive(Context context, Intent intent) {
 			//退出程序

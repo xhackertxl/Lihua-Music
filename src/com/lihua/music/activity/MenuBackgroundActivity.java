@@ -2,10 +2,13 @@
  * Copyright (c) www.longdw.com
  */
 package com.lihua.music.activity;
-import com.lihua.music.R;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lihua.music.R;
+import com.lihua.music.fragment.LeftFragment;
+import com.lihua.music.fragment.MenuBackgroundFragment;
+import com.lihua.music.fragment.RightFragment;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -14,11 +17,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
-
-import com.lihua.music.fragment.LeftFragment;
-import com.lihua.music.fragment.MenuBackgroundFragment;
-import com.lihua.music.fragment.RightFragment;
-import com.zdp.aseo.content.AseoZdpAseo;
 /**
  * 设置背景
  * @author tacker(335682638@qq.com)
@@ -36,7 +34,7 @@ public class MenuBackgroundActivity extends FragmentActivity {
 		setContentView(R.layout.menu_background);
 
 		mViewPager = (ViewPager) findViewById(R.id.viewPager);
-		AseoZdpAseo.initType(this, AseoZdpAseo.INSERT_TYPE);
+
 		initViewPager();
 	}
 

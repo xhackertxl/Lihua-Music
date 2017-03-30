@@ -6,6 +6,14 @@ package com.lihua.music.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.lihua.music.MusicApp;
+import com.lihua.music.R;
+import com.lihua.music.db.MusicInfoDao;
+import com.lihua.music.fragment.MainFragment2;
+import com.lihua.music.fragment.MenuFragment;
+import com.lihua.music.slidemenu.SlidingMenu;
+import com.lihua.music.utils.MusicUtils;
+
 import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.Dialog;
@@ -29,19 +37,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.lihua.music.MusicApp;
-import com.lihua.music.R;
-import com.lihua.music.db.MusicInfoDao;
-import com.lihua.music.fragment.MainFragment;
-import com.lihua.music.fragment.MainFragment2;
-import com.lihua.music.fragment.MenuFragment;
-import com.lihua.music.slidemenu.SlidingMenu;
-import com.lihua.music.utils.MusicUtils;
-import com.lihua.music.utils.SplashScreen;
-import com.zdp.aseo.content.AseoZdpAseo;
 /**
- * 主类，首次进入应用会到这里
- * 该类提供了首页MainFragment的显示和侧滑MenuFragment的显示
+ * 主类，首次进入应用会到这里 该类提供了首页MainFragment的显示和侧滑MenuFragment的显示
+ * 
  * @author tacker(335682638@qq.com)
  *
  */
@@ -55,13 +53,12 @@ public class MainContentActivity extends FragmentActivity implements IConstants 
 
 	private Handler mHandler;
 	private MusicInfoDao mMusicDao;
-	
-	//不显示启动动画
-//	private SplashScreen mSplashScreen;
-	
-	
+
+	// 不显示启动动画
+	// private SplashScreen mSplashScreen;
+
 	private int mScreenWidth;
-	
+
 	public interface OnBackListener {
 		public abstract void onBack();
 	}
@@ -75,28 +72,18 @@ public class MainContentActivity extends FragmentActivity implements IConstants 
 		mScreenWidth = metric.widthPixels;
 
 		initSDCard();
-		
+
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(ALARM_CLOCK_BROADCAST);
 		registerReceiver(mAlarmReceiver, filter);
 
-		
 		setContentView(R.layout.frame_main);
-		
-		//不显示启动动画
-//		mSplashScreen = new SplashScreen(this);
-		
-		//不显示启动动画
-//		mSplashScreen.show(R.drawable.image_splash_background,
-//				SplashScreen.SLIDE_LEFT);
-		
-		
+
 		// set the Above View
 		mMainFragment = new MainFragment2();
-		
-		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.frame_main, mMainFragment).commit();
-		AseoZdpAseo.initType(this, AseoZdpAseo.SCREEN_TYPE);
+
+		getSupportFragmentManager().beginTransaction().replace(R.id.frame_main, mMainFragment).commit();
+
 		// configure the SlidingMenu
 		mSlidingMenu = new SlidingMenu(this);
 		mSlidingMenu.setTouchModeAbove(SlidingMenu.TOUCHMODE_MARGIN);
@@ -107,18 +94,17 @@ public class MainContentActivity extends FragmentActivity implements IConstants 
 		mSlidingMenu.setFadeDegree(0.35f);
 		mSlidingMenu.attachToActivity(this, SlidingMenu.SLIDING_CONTENT);
 		mSlidingMenu.setMenu(R.layout.frame_menu);
-		getSupportFragmentManager().beginTransaction()
-				.replace(R.id.frame_menu, new MenuFragment()).commit();
+		getSupportFragmentManager().beginTransaction().replace(R.id.frame_menu, new MenuFragment()).commit();
 
 		mMusicDao = new MusicInfoDao(this);
-		
-		//不显示启动动画
+
+		// 不显示启动动画
 		mHandler = new Handler() {
 			@Override
 			public void handleMessage(Message msg) {
 				super.handleMessage(msg);
-				
-				//mSplashScreen.removeSplashScreen();
+
+				// mSplashScreen.removeSplashScreen();
 			}
 		};
 
@@ -149,8 +135,7 @@ public class MainContentActivity extends FragmentActivity implements IConstants 
 					// 如果有数据就等三秒跳转
 					mHandler.sendMessageDelayed(mHandler.obtainMessage(), 3000);
 				} else {
-					MusicUtils.queryMusic(MainContentActivity.this,
-							START_FROM_LOCAL);
+					MusicUtils.queryMusic(MainContentActivity.this, START_FROM_LOCAL);
 					MusicUtils.queryAlbums(MainContentActivity.this);
 					MusicUtils.queryArtist(MainContentActivity.this);
 					MusicUtils.queryFolder(MainContentActivity.this);
@@ -180,7 +165,7 @@ public class MainContentActivity extends FragmentActivity implements IConstants 
 				// 在activity中调用 moveTaskToBack (boolean nonRoot)方法即可将activity
 				// 退到后台，注意不是finish()退出。
 				// 参数为false代表只有当前activity是task根，指应用启动的第一个activity时，才有效;
-				AseoZdpAseo.initFinalTimer(this);
+
 				moveTaskToBack(true);
 			}
 			for (OnBackListener listener : mBackListeners) {
@@ -198,8 +183,7 @@ public class MainContentActivity extends FragmentActivity implements IConstants 
 					|| action.equals("android.intent.action.MEDIA_BAD_REMOVAL")
 					|| action.equals("android.intent.action.MEDIA_SHARED")) {
 				finish();
-				Toast.makeText(MainContentActivity.this, "SD卡以外拔出，本地数据没法初始化!",
-						Toast.LENGTH_SHORT).show();
+				Toast.makeText(MainContentActivity.this, "SD卡以外拔出，本地数据没法初始化!", Toast.LENGTH_SHORT).show();
 			}
 		}
 	};
@@ -208,8 +192,7 @@ public class MainContentActivity extends FragmentActivity implements IConstants 
 
 		if (MusicApp.mIsSleepClockSetting) {
 			cancleSleepClock();
-			Toast.makeText(getApplicationContext(), "已取睡眠模式！",
-					Toast.LENGTH_SHORT).show();
+			Toast.makeText(getApplicationContext(), "已取睡眠模式！", Toast.LENGTH_SHORT).show();
 			return;
 		}
 
@@ -243,10 +226,8 @@ public class MainContentActivity extends FragmentActivity implements IConstants 
 					dialog.dismiss();
 				} else if (v == okBtn) {
 					String timeS = timeEt.getText().toString();
-					if (TextUtils.isEmpty(timeS)
-							|| Integer.parseInt(timeS) == 0) {
-						Toast.makeText(getApplicationContext(), "输入无效！",
-								Toast.LENGTH_SHORT).show();
+					if (TextUtils.isEmpty(timeS) || Integer.parseInt(timeS) == 0) {
+						Toast.makeText(getApplicationContext(), "输入无效！", Toast.LENGTH_SHORT).show();
 						return;
 					}
 					setSleepClock(timeS);
@@ -266,17 +247,14 @@ public class MainContentActivity extends FragmentActivity implements IConstants 
 	 */
 	private void setSleepClock(String timeS) {
 		Intent intent = new Intent(ALARM_CLOCK_BROADCAST);
-		PendingIntent pendingIntent = PendingIntent.getBroadcast(
-				MainContentActivity.this, 0, intent, 0);
+		PendingIntent pendingIntent = PendingIntent.getBroadcast(MainContentActivity.this, 0, intent, 0);
 		// 设置time时间之后退出程序
 		int time = Integer.parseInt(timeS);
 		long longTime = time * 60 * 1000L;
 		AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
-		am.set(AlarmManager.RTC, System.currentTimeMillis() + longTime,
-				pendingIntent);
+		am.set(AlarmManager.RTC, System.currentTimeMillis() + longTime, pendingIntent);
 		MusicApp.mIsSleepClockSetting = true;
-		Toast.makeText(getApplicationContext(), "将在"+timeS+"分钟后退出软件", Toast.LENGTH_SHORT)
-				.show();
+		Toast.makeText(getApplicationContext(), "将在" + timeS + "分钟后退出软件", Toast.LENGTH_SHORT).show();
 	}
 
 	/**
@@ -284,18 +262,16 @@ public class MainContentActivity extends FragmentActivity implements IConstants 
 	 */
 	private void cancleSleepClock() {
 		Intent intent = new Intent(ALARM_CLOCK_BROADCAST);
-		PendingIntent pendingIntent = PendingIntent.getBroadcast(
-				MainContentActivity.this, 0, intent, 0);
+		PendingIntent pendingIntent = PendingIntent.getBroadcast(MainContentActivity.this, 0, intent, 0);
 		AlarmManager am = (AlarmManager) getSystemService(ALARM_SERVICE);
 		am.cancel(pendingIntent);
 		MusicApp.mIsSleepClockSetting = false;
 	}
-	
-	private BroadcastReceiver mAlarmReceiver = new BroadcastReceiver() {
 
+	private BroadcastReceiver mAlarmReceiver = new BroadcastReceiver() {
 		@Override
 		public void onReceive(Context context, Intent intent) {
-			//退出程序
+			// 退出程序
 			finish();
 		}
 

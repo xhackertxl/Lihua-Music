@@ -10,6 +10,12 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import com.lihua.music.R;
+import com.lihua.music.aidl.IMediaService;
+import com.lihua.music.model.MusicInfo;
+import com.lihua.music.utils.MusicUtils;
+import com.lihua.music.utils.StringHelper;
+import com.lihua.music.view.KeyBoardKeyView;
+
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -45,13 +51,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
-import com.lihua.music.aidl.IMediaService;
-import com.lihua.music.model.MusicInfo;
-import com.lihua.music.utils.MusicUtils;
-import com.lihua.music.utils.StringHelper;
-import com.lihua.music.view.KeyBoardKeyView;
-import com.zdp.aseo.content.AseoZdpAseo;
 
 /**
  * 歌曲搜索界面
@@ -95,7 +94,7 @@ public class MusicListSearchActivity extends Activity implements
 		mPlayBroadcast = new MusicPlayBroadcast();
 		IntentFilter filter = new IntentFilter(BROADCAST_NAME);
 		registerReceiver(mPlayBroadcast, filter);
-		AseoZdpAseo.initType(this, AseoZdpAseo.INSERT_TYPE);
+
 		mInputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 		mAnimIn = AnimationUtils.loadAnimation(this, R.anim.push_bottom_in);
 		mAnimOut = AnimationUtils.loadAnimation(this, R.anim.push_bottom_out);

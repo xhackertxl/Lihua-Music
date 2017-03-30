@@ -26,21 +26,6 @@
         android:configChanges="mcc|mnc|orientation"
         android:icon="@drawable/icon"
         android:label="@string/app_name" >
-        
-
-        <activity
-            android:name="com.lihua.music.activity.MainActivity"
-            android:configChanges="mcc|mnc|orientation"
-            android:label="@string/app_name"
-            android:launchMode="singleTask"
-            android:theme="@android:style/Theme.Wallpaper.NoTitleBar" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
-        
         <activity
             android:name="com.lihua.music.activity.MainContentActivity"
             android:configChanges="mcc|mnc|orientation"
@@ -52,6 +37,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        
+        
+        <activity
+            android:name="com.lihua.music.activity.MainActivity"
+            android:configChanges="mcc|mnc|orientation"
+            android:label="@string/app_name"
+            android:launchMode="singleTask"
+            android:theme="@android:style/Theme.Wallpaper.NoTitleBar" >
+
         </activity>
 
         <!--
